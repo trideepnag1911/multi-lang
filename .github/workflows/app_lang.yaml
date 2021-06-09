@@ -3,7 +3,7 @@ name: Getting Application Language
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 env:
   Docker_File_PATH: ${{ secrets.Docker_Path }}
   
