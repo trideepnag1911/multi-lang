@@ -20,26 +20,6 @@ jobs:
     - name: Checking Dockerfile
       run: |
         echo $Docker_File_PATH
-        app=`grep -i FROM $Docker_File_PATH | egrep -i 'java|jre'`
+        app=`grep -i FROM $Docker_File_PATH | egrep -i 'java|jre|dotnet|aspnet'`
         echo $app
-        if [ $? -eq 0 ]
-        then
-        App_Lang=java
-        echo $App_Lang
-        else
-        grep -i FROM $Docker_File_PATH | egrep -i 'node|npm'
-        if [ $? -eq 0 ]
-        then
-        App_Lang=nodejs
-        echo $App_Lang
-        else
-        grep -i FROM $Docker_File_PATH | egrep -i 'dotnet|aspnet'
-        if [ $? -eq 0 ]
-        then
-        App_Lang=dotnet
-        echo $App_Lang
-        else
-        echo "Application Not Supported"
-        fi
-        fi
-        fi
+        
