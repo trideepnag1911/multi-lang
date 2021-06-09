@@ -10,5 +10,5 @@ services:
     image: ${DOCKER_REGISTRY-}eshoppublicapi
     build:
       context: .
-      dockerfile: src/PublicApi/Dockerfile
+      dockerfile: src/PublicApi/Dockerfile1
 
