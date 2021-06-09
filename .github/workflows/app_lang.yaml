@@ -1,0 +1,43 @@
+name: Getting Application Language
+
+on:
+  push:
+    branches:
+      - 'master'
+env:
+  Docker_File_PATH: ${{ secrets.Docker_Path }}
+  
+jobs:
+  identify_app_language:
+    name: Language Identification
+    runs-on: ubuntu-latest
+    environment: testing
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: Checking Dockerfile
+      run: |
+        grep -i FROM $Docker_File_PATH | egrep -i 'java|jre'
+        if [ $? -eq 0 ]
+        then
+        App_Lang=java
+        echo $App_Lang
+        else
+        grep -i FROM $Docker_File_PATH | egrep -i 'node|npm'
+        if [ $? -eq 0 ]
+        then
+        App_Lang=nodejs
+        echo $App_Lang
+        else
+        grep -i FROM $Docker_File_PATH | egrep -i 'dotnet|aspnet'
+        if [ $? -eq 0 ]
+        then
+        App_Lang=dotnet
+        echo $App_Lang
+        else
+        echo "Application Not Supported"
+        fi
+        fi
+        fi
