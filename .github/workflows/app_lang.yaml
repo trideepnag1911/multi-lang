@@ -19,7 +19,7 @@ jobs:
     
     - name: Checking Dockerfile
       run: |
-        grep -i FROM $Docker_File_PATH | egrep -i 'java|jre'
+        grep -i FROM $Docker_File_PATH | egrep -i 'java|jre|node|npm|dotnet|aspnet'
         if [ $? -eq 0 ]
         then
         App_Lang=java
