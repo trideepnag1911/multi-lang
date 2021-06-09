@@ -19,6 +19,7 @@ jobs:
     
     - name: Checking Dockerfile
       run: |
+        echo $Docker_File_PATH
         grep -i FROM $Docker_File_PATH | egrep -i 'java|jre|node|npm|dotnet|aspnet'
         if [ $? -eq 0 ]
         then
