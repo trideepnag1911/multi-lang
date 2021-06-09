@@ -5,7 +5,7 @@ on:
     branches:
       - 'main'
 env:
-  Docker_File_PATH: ${{ secrets.Docker_Path }}
+  Docker_File_PATH: ${{ secrets.DOCKERFILE_PATH }}
   
 jobs:
   identify_app_language:
@@ -20,7 +20,7 @@ jobs:
     - name: Checking Dockerfile
       run: |
         echo $Docker_File_PATH
-        grep -i FROM $Docker_File_PATH | egrep -i 'java|jre|node|npm|dotnet|aspnet'
+        grep -i FROM $Docker_File_PATH | egrep -i 'java|jre'
         if [ $? -eq 0 ]
         then
         App_Lang=java
