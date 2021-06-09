@@ -5,7 +5,7 @@ on:
     branches:
       - 'main'
 env:
-  Docker_File_PATH: ${{ secrets.DOCKERFILE_PATH }}
+  Docker_File_PATH: src/Web/Dockerfile
   
 jobs:
   identify_app_language:
